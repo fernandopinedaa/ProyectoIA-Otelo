@@ -14,7 +14,8 @@ autojuego.
 - `othello_ai/neural.py`: red neuronal de valor implementada con NumPy.
 - `othello_ai/train.py`: entrenamiento de la red de valor.
 - `othello_ai/tournament.py`: comparativas entre agentes.
-- `othello_ai/cli.py`: interfaz de texto para jugar contra la máquina.
+- `othello_ai/web_gui.py`: interfaz gráfica local en navegador.
+- `othello_ai/cli.py`: comando de juego para interfaz gráfica o consola.
 - `tests/`: pruebas unitarias con `unittest`.
 - `docs/memoria-otelo.tex`: memoria IEEE del trabajo.
 - `docs/memoria-otelo.pdf`: memoria compilada.
@@ -51,12 +52,27 @@ tectonic memoria-otelo.tex
 
 ## Jugar contra la máquina
 
+Para abrir la interfaz gráfica local en el navegador:
+
 ```bash
-python3 -m othello_ai.cli --agent uct:300 --human black
+python3 -m othello_ai.cli
 ```
 
-Coordenadas aceptadas: `d3`, `c4`, etc. También se acepta `fila columna`, por
-ejemplo `3 4`.
+Dentro de la interfaz puedes elegir el rival, incluyendo el agente UCT con red
+neuronal si existe `models/value_net_experiment.npz`.
+
+Para jugar por consola:
+
+```bash
+python3 -m othello_ai.cli --text
+```
+
+Con el primer comando, la consola mostrará una URL local, por ejemplo
+`http://127.0.0.1:8765/`, y el navegador se abrirá automáticamente. Para parar
+el servidor, pulsa `Ctrl+C` en la consola.
+
+Con el segundo comando, las coordenadas aceptadas son `d3`, `c4`, etc. También
+se acepta `fila columna`, por ejemplo `3 4`.
 
 ## Generar datos por autojuego
 

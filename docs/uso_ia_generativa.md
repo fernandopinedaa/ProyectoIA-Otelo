@@ -21,7 +21,13 @@ La IA generativa se ha empleado como ayuda para realizar las siguientes tareas:
 - Generar una primera version del motor de Otelo.
 - Generar una implementacion propia de MCTS con UCT.
 - Generar agentes de referencia: aleatorio, voraz, heuristico, UCT y UCTNN.
-- Crear scripts para autojuego, entrenamiento, torneos e interfaz de texto.
+- Crear scripts para autojuego, entrenamiento, torneos, interfaz gráfica e
+  interfaz de texto.
+- Diseñar la interfaz gráfica local en navegador para jugar partidas
+  interactivas contra los distintos agentes.
+- Depurar problemas de interacción de la interfaz gráfica, como la actualización
+  de casillas legales tras la respuesta de la máquina, el retraso entre turnos,
+  la ventana final de resultado y la gestión del puerto local.
 - Implementar una red neuronal de valor con NumPy.
 - Preparar pruebas unitarias.
 - Ejecutar experimentos reproducibles.
@@ -68,6 +74,18 @@ de las consultas tecnicas realizadas:
   valor y el flujo de entrenamiento".
 - "Explica la diferencia entre jugar contra UCT con red y UCT sin red".
 - "Explica que contiene el dataset .npz y que contiene el modelo entrenado".
+- "Crea una interfaz gráfica local para jugar a Otelo desde el navegador usando
+  solo la biblioteca estándar de Python".
+- "Haz que el tablero permita hacer clic únicamente en las casillas legales y
+  que se actualice después de cada movimiento".
+- "Separa la jugada humana y la jugada de la máquina para poder introducir un
+  segundo de espera entre ambas".
+- "Añade un selector de rival que permita elegir entre los agentes aleatorio,
+  voraz, heurístico, UCT y UCT con red neuronal".
+- "Añade una ventana emergente al terminar la partida indicando el ganador, el
+  marcador final y la opción de iniciar una nueva partida".
+- "Corrige el problema de puerto ocupado al abrir la interfaz gráfica y haz que
+  el servidor pueda usar otro puerto local disponible".
 
 Ademas de esos prompts principales, se hicieron preguntas de aclaracion sobre el
 papel de algunos ficheros, el dataset o el modelo entrenado.

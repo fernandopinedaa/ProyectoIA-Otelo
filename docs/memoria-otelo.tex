@@ -275,7 +275,8 @@ implementa las reglas, \texttt{mcts.py} implementa UCT, \texttt{agents.py}
 define los jugadores, \texttt{self\_play.py} genera datasets,
 \texttt{neural.py} define la red de valor, \texttt{train.py} lanza el
 entrenamiento a partir de un dataset guardado y \texttt{tournament.py} ejecuta
-comparativas.
+comparativas. Además, \texttt{cli.py} proporciona los comandos de juego y
+\texttt{web\_gui.py} implementa la interfaz gráfica local en navegador.
 
 \subsection{Motor del juego}
 
@@ -289,9 +290,36 @@ comparten tableros modificables.
 
 El módulo también incluye funciones auxiliares para convertir coordenadas de
 texto, calcular puntuaciones, representar el tablero en ASCII y obtener
-características para la red. La interfaz de texto muestra con asteriscos las
-jugadas legales, lo que permite probar el agente sin necesidad de construir una
-interfaz gráfica.
+características para la red. La versión final incorpora una interfaz gráfica
+local en navegador, implementada con un servidor HTTP de la biblioteca estándar
+de Python. Esta interfaz permite hacer clic en las casillas legales y ver la
+respuesta del agente sin introducir coordenadas manualmente.
+
+\subsection{Interfaz gráfica}
+
+La interfaz gráfica se implementa en \texttt{web\_gui.py} sin dependencias
+externas adicionales. El servidor local expone una página HTML y varios
+endpoints JSON para consultar el estado de la partida, aplicar una jugada
+humana, ejecutar el movimiento de la máquina y comenzar una nueva partida. Esta
+decisión mantiene el proyecto ligero y evita depender de bibliotecas gráficas
+que pueden no estar instaladas en todos los equipos.
+
+El tablero se muestra como una cuadrícula \(8 \times 8\) con las fichas negras y
+blancas. Las casillas legales aparecen resaltadas y el usuario puede seleccionar
+la jugada mediante un clic. Tras cada movimiento humano se introduce una pausa
+breve antes de la respuesta de la máquina, de modo que se pueda observar el
+estado intermedio y no parezca que ambos movimientos se han producido al mismo
+tiempo. Cuando la partida termina, la interfaz muestra una ventana emergente con
+el ganador, el marcador final y la opción de iniciar otra partida.
+
+La interfaz también permite elegir el rival antes de comenzar una partida. Se
+puede jugar contra los agentes de referencia, como \texttt{random},
+\texttt{greedy} o \texttt{heuristic}, contra UCT con distinto número de
+iteraciones o contra UCTNN usando el modelo entrenado. De esta forma, la misma
+herramienta sirve tanto para probar manualmente el comportamiento del motor como
+para enseñar durante la defensa la diferencia entre un agente UCT clásico y un
+agente UCT que utiliza la red neuronal como función de valor. La ejecución por
+consola se conserva mediante \texttt{python3 -m othello\_ai.cli --text}.
 
 \subsection{Agentes implementados}
 
@@ -643,13 +671,14 @@ de Otelo y usarla dentro de MCTS como reemplazo de la política por defecto.
 
 \subsection{Uso del proyecto}
 
-El proyecto está preparado para poder mostrar tres tipos de ejecución. La primera es una partida interactiva contra la máquina usando la
-interfaz de texto. Esta ejecución permite comprobar que el motor aplica las
-reglas correctamente y que el agente devuelve movimientos legales. La segunda es
-un torneo corto entre dos agentes, útil para mostrar cómo se comparan los
-jugadores sin intervención humana. La tercera es la ejecución del script de
-experimentos, que reproduce el pipeline completo de generación de datos,
-entrenamiento y evaluación.
+El proyecto está preparado para poder mostrar tres tipos de ejecución. La
+primera es una partida interactiva contra la máquina usando la interfaz gráfica
+en navegador. Esta ejecución permite comprobar que el motor aplica las reglas
+correctamente y que el agente devuelve movimientos legales. La segunda es un
+torneo corto entre dos agentes, útil para mostrar cómo se comparan los jugadores
+sin intervención humana. La tercera es la ejecución del script de experimentos,
+que reproduce el pipeline completo de generación de datos, entrenamiento y
+evaluación.
 
 \section{Conclusiones}
 
