@@ -27,10 +27,10 @@ python3 -m othello_ai.experiments --selfplay-games 50 --selfplay-agent uct:12 --
 |---|---:|---:|---:|---:|---:|---:|---:|
 | `greedy` | `random` | 12 | 9 | 3 | 0 | 8.83 | 0.3 |
 | `heuristic` | `greedy` | 12 | 11 | 1 | 0 | 24.92 | 1.1 |
-| `uct:16` | `greedy` | 12 | 8 | 4 | 0 | 6.00 | 36.4 |
-| `uct:32` | `uct:16` | 12 | 7 | 4 | 1 | 9.33 | 109.3 |
+| `uct:16` | `greedy` | 12 | 8 | 4 | 0 | 6.00 | 36.3 |
+| `uct:32` | `uct:16` | 12 | 7 | 4 | 1 | 9.33 | 109.2 |
 | `uctnn:models/value_net_experiment.npz:16` | `random` | 12 | 11 | 0 | 1 | 17.33 | 2.5 |
-| `uctnn:models/value_net_experiment.npz:16` | `greedy` | 12 | 9 | 3 | 0 | 9.50 | 2.5 |
-| `uctnn:models/value_net_experiment.npz:16` | `uct:16` | 12 | 10 | 2 | 0 | 13.33 | 38.5 |
+| `uctnn:models/value_net_experiment.npz:16` | `greedy` | 12 | 9 | 3 | 0 | 9.50 | 2.7 |
+| `uctnn:models/value_net_experiment.npz:16` | `uct:16` | 12 | 10 | 2 | 0 | 13.33 | 39.5 |
 
 Nota: las partidas alternan el color inicial para reducir el sesgo de mover primero.

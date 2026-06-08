@@ -14,7 +14,7 @@ integrantes deben revisar, ejecutar y entender el codigo antes de la defensa.
 
 ## Usos realizados
 
-La IA generativa se ha usado para las siguientes tareas:
+La IA generativa se ha empleado como ayuda para realizar las siguientes tareas:
 
 - Leer y resumir el enunciado del trabajo.
 - Proponer una arquitectura inicial del proyecto.

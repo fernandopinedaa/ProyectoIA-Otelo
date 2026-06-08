@@ -7,22 +7,22 @@ autojuego.
 ## Contenido
 
 - `othello_ai/game.py`: reglas completas de Otelo/Reversi.
-- `othello_ai/mcts.py`: implementacion propia de MCTS con seleccion UCT.
+- `othello_ai/mcts.py`: implementación propia de MCTS con selección UCT.
 - `othello_ai/agents.py`: agentes `random`, `greedy`, `heuristic`, `uct` y
   `uctnn`.
-- `othello_ai/self_play.py`: generacion de datasets por partidas automaticas.
+- `othello_ai/self_play.py`: generación de datasets por partidas automáticas.
 - `othello_ai/neural.py`: red neuronal de valor implementada con NumPy.
 - `othello_ai/train.py`: entrenamiento de la red de valor.
 - `othello_ai/tournament.py`: comparativas entre agentes.
-- `othello_ai/cli.py`: interfaz de texto para jugar contra la maquina.
+- `othello_ai/cli.py`: interfaz de texto para jugar contra la máquina.
 - `tests/`: pruebas unitarias con `unittest`.
 - `docs/memoria-otelo.tex`: memoria IEEE del trabajo.
 - `docs/memoria-otelo.pdf`: memoria compilada.
-- `docs/uso_ia_generativa.md`: declaracion separada sobre uso de IA generativa.
+- `docs/uso_ia_generativa.md`: declaración separada sobre uso de IA generativa.
 
 ## Requisitos
 
-El codigo solo necesita NumPy.
+El código solo necesita NumPy.
 
 ```bash
 python3 -m pip install -r requirements.txt
@@ -34,9 +34,9 @@ python3 -m pip install -r requirements.txt
 python3 -m unittest discover -s tests -v
 ```
 
-## Documentacion
+## Documentación
 
-La memoria final esta en `docs/`:
+La memoria final está en `docs/`:
 
 - `docs/memoria-otelo.tex`
 - `docs/memoria-otelo.pdf`
@@ -49,13 +49,13 @@ cd docs
 tectonic memoria-otelo.tex
 ```
 
-## Jugar contra la maquina
+## Jugar contra la máquina
 
 ```bash
 python3 -m othello_ai.cli --agent uct:300 --human black
 ```
 
-Coordenadas aceptadas: `d3`, `c4`, etc. Tambien se acepta `fila columna`, por
+Coordenadas aceptadas: `d3`, `c4`, etc. También se acepta `fila columna`, por
 ejemplo `3 4`.
 
 ## Generar datos por autojuego
@@ -68,8 +68,8 @@ python3 -m othello_ai.self_play \
   --seed 11
 ```
 
-Cada estado se etiqueta con `+1`, `0` o `-1` segun el resultado final desde la
-perspectiva del jugador activo. Por defecto se aplican las 8 simetrias del
+Cada estado se etiqueta con `+1`, `0` o `-1` según el resultado final desde la
+perspectiva del jugador activo. Por defecto se aplican las 8 simetrías del
 tablero para aumentar el dataset.
 
 ## Entrenar la red de valor
@@ -114,24 +114,23 @@ python3 -m othello_ai.experiments \
   --seed 23
 ```
 
-La ejecucion validada genero:
+La ejecución validada generó:
 
 - `data/processed/selfplay_experiment.npz`: 23.792 ejemplos.
 - `models/value_net_experiment.npz`: modelo de valor entrenado.
 - `docs/experiment_results.md`: resumen de resultados.
 - `docs/experiment_results.json`: resultados estructurados.
+- Pérdida final de entrenamiento: `0.79606`.
+- Pérdida final de validación: `0.80524`.
 
 Resumen de resultados obtenidos:
 
-| Agente A | Agente B | Partidas | Victorias A | Victorias B | Empates | Dif. media A |
-|---|---:|---:|---:|---:|---:|---:|
-| `greedy` | `random` | 12 | 9 | 3 | 0 | 8.83 |
-| `heuristic` | `greedy` | 12 | 11 | 1 | 0 | 24.92 |
-| `uct:16` | `greedy` | 12 | 8 | 4 | 0 | 6.00 |
-| `uct:32` | `uct:16` | 12 | 7 | 4 | 1 | 9.33 |
-| `uctnn:...:16` | `random` | 12 | 11 | 0 | 1 | 17.33 |
-| `uctnn:...:16` | `greedy` | 12 | 9 | 3 | 0 | 9.50 |
-| `uctnn:...:16` | `uct:16` | 12 | 10 | 2 | 0 | 13.33 |
-
-Estos numeros muestran que la ampliacion del dataset mejora claramente al agente
-neuronal: UCTNN-16 supera a `random`, `greedy` y `uct:16` en esta ejecucion.
+| Agente A | Agente B | Partidas | Victorias A | Victorias B | Empates | Dif. media A | Tiempo |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `greedy` | `random` | 12 | 9 | 3 | 0 | 8.83 | 0.3 s |
+| `heuristic` | `greedy` | 12 | 11 | 1 | 0 | 24.92 | 1.1 s |
+| `uct:16` | `greedy` | 12 | 8 | 4 | 0 | 6.00 | 36.3 s |
+| `uct:32` | `uct:16` | 12 | 7 | 4 | 1 | 9.33 | 109.2 s |
+| `uctnn:...:16` | `random` | 12 | 11 | 0 | 1 | 17.33 | 2.5 s |
+| `uctnn:...:16` | `greedy` | 12 | 9 | 3 | 0 | 9.50 | 2.7 s |
+| `uctnn:...:16` | `uct:16` | 12 | 10 | 2 | 0 | 13.33 | 39.5 s |
