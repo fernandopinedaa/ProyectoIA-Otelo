@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/memoria-otelo.aux": true,
+        "**/memoria-otelo.log": true,
+        "**/memoria-otelo.gz": true,
+        "**/memoria-otelo.out": true
+    }
+}
